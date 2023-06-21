@@ -1,0 +1,7 @@
+indent_style = tab # tabulaciones con el tab
+tab_width = 2 # cada tab equivale a 2 espaciados
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8 # poder colocar ñ, tildes, etc.
+trim_trailing_whitespace = true
+# si dejamos un espacio en blanco al final de una línea, que lo elimine.
