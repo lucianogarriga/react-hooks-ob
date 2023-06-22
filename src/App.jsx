@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <div className="card">  
-      {/* <TaskListComponent/>  */}
+      <TaskListComponent></TaskListComponent>
       {/* <Ejemplo1 /> */}
       {/* <Ejemplo2 /> */}
       {/* <Ejemplo3/> */}
@@ -24,7 +24,7 @@ function App() {
         {/* <p>Contenido del children</p>
         <p>Este es el children del componente padre</p>
       </Ejemplo4> */} 
-      <GreetingStyled name="Luciano"></GreetingStyled> 
+      {/* <GreetingStyled name="Luciano"></GreetingStyled>  */}
       </div>
     </>
   );

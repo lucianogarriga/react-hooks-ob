@@ -4,10 +4,9 @@ import { LEVELS } from "../../models/levels.enum";
 import TaskComponent from "../pure/task";
 
 // Import styles
-import '../../styles/task.scss';
+import "../../styles/task.scss";
 
 function TaskListComponent() {
-
   // Valor inicial de la variable de estado
   const defaultTask = new Task(
     "Example",
@@ -37,12 +36,38 @@ function TaskListComponent() {
 
   return (
     <div>
-      <div>
-        <h1>Your Tasks:</h1>
-      </div>
-      {/* {TODO - APLICAR  MAP/FOR P/ RENDERIZAR LISTA DE TAREAS} */}
-      <TaskComponent task={defaultTask} changeState={changeCompleted}> 
-      </TaskComponent>
+      <div className="col-12">
+        <div className="card">
+          {/* Card Header - Title */}
+          <div className="card-header p-3">
+            <h5>Your Tasks:</h5>
+          </div>
+          {/* Body - Content */}
+          <div
+            className="card-body"
+            data-mbd-perfect-scrollbar="true"
+            style={{ position: "relative", height: "300px" }}
+          >
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Priority</th>
+                  <th scope="col">Title</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* TODO: Iterar sobre una lista de tareas */}
+      <TaskComponent
+        task={defaultTask}
+        changeState={changeCompleted}
+      ></TaskComponent>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div> 
     </div>
   );
 }
