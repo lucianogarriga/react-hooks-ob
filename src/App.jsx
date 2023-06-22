@@ -6,7 +6,7 @@ import Ejemplo3 from "./hooks/Ejemplo3";
 import MiComponenteContexto from "./hooks/Ejemplo3";
 import Ejemplo4 from "./hooks/Ejemplo4";
 import TaskListComponent from "./components/container/task_list";
-import GreetingStyled from "./components/pure/greetingStyled";
+import GreetingStyled from "./components/pure/greetingStyled";  
 
 function App() { 
  
@@ -24,7 +24,7 @@ function App() {
         {/* <p>Contenido del children</p>
         <p>Este es el children del componente padre</p>
       </Ejemplo4> */} 
-      <GreetingStyled name="Luciano"></GreetingStyled>
+      <GreetingStyled name="Luciano"></GreetingStyled> 
       </div>
     </>
   );
