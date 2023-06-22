@@ -4,6 +4,7 @@ import { Task } from "../../models/task.class";
 
 // Import styles
 import "../../styles/task.scss";
+import { LEVELS } from "../../models/levels.enum";
 
 // Colocar task o props es lo mismo
 const TaskComponent = ({ task, changeState }) => {
@@ -14,6 +15,47 @@ const TaskComponent = ({ task, changeState }) => {
     };
   }, []);
 
+  /**
+   * Function that returns a Badge
+   * depends of the level of task
+   */
+  function taskLevelBadge() {
+    switch (task.level) {
+      case LEVELS.NORMAL:
+        return (
+          <h6 className="mb-0 ">
+            <span className="badge bg-primary">{task.level}</span>
+          </h6>
+        );
+      case LEVELS.URGENT:
+        return (
+          <h6 className="mb-0 ">
+            <span className="badge bg-warning">{task.level}</span>
+          </h6>
+        );
+      case LEVELS.BLOCKING:
+        return (
+          <h6 className="mb-0 ">
+            <span className="badge bg-danger">{task.level}</span>
+          </h6>
+        );
+      default:
+        break;
+    }
+  }
+
+  /**
+   * Function that returns a toggle icon
+   * depends if the task is completed or not
+   */
+  function taskCompleted(){
+    return task.completed ? (
+      <i className="bi-toggle-on" style={{ color: "green" }}></i>
+    ) : (
+      <i className="bi-toggle-off" style={{ color: "red" }}></i>
+    )
+  }
+
   return (
     <tr className="fw-normal">
       <th>
@@ -22,27 +64,16 @@ const TaskComponent = ({ task, changeState }) => {
       <td className="align-middle">
         <span>{task.description}</span>
       </td>
-      <td className="align-middle">
-      {/* Sustituir por badge */}
-        <span>{task.level}</span>
+      <td className="align-middle"> 
+        {taskLevelBadge()}
       </td>
-      <td className="align-middle">
-      {/* Sustituir por iconos */}
-        <span>{task.completed ? "COMPLETED" : "PENDING"}</span>
+      <td className="align-middle p-1">
+        {/* Sustituir por iconos */}
+        {/* Ejemplos con switch/case y con op ternario */}
+        {taskCompleted()}
+        <i className="bi-trash" style={{ color: "tomato" }}></i>
       </td>
     </tr>
-
-    // <div>
-    //   <tr className="task-name">Nombre: {task.name}</tr>
-    //   <tr>Descripcion: {task.description}</tr>
-    //   <tr>Level: {task.level}</tr>
-    //   <tr>This task is: {task.completed
-    //     ? 'COMPLETED'
-    //     : 'PENDING'
-    //   }</tr>
-
-    //   <button onClick={changeState}>Cambiar estado</button>
-    // </div>
   );
 };
 
