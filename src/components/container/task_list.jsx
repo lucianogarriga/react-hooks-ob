@@ -5,22 +5,21 @@ import TaskComponent from "../pure/task";
 
 // Import styles
 import "../../styles/task.scss";
+import TaskForm from "../pure/forms/taskForm";
 
 function TaskListComponent() {
-  // Valor inicial de la variable de estado
-  const defaultTask = new Task(
-    "Example",
-    "Default description",
-    false,
-    LEVELS.NORMAL
-  );
+  // Initial value of State Variable
+  const defaultTask1 = new Task("Example","Description 1",false,LEVELS.NORMAL); 
+  const defaultTask2 = new Task("Example 2","Description 2",true,LEVELS.BLOCKING);
+  const defaultTask3 = new Task("Example 3","Description 3",true,LEVELS.URGENTE);
 
-  // Estado del Componente
-  const [tasks, setTasks] = useState([defaultTask]);
-  // Estado 'Loading'
+  // Component State
+  const [tasks, setTasks] = useState([defaultTask1, defaultTask2, defaultTask3]);
+  // State 'Loading'
   const [loading, setLoading] = useState(true);
 
-  // Control del ciclo de vida del Componente
+  // Control of lifecycle of the Component
+ 
 
   useEffect(() => {
     console.log("Task State has been modified");
@@ -28,11 +27,7 @@ function TaskListComponent() {
     return () => {
       console.log("TaskList component is goint to unmount");
     };
-  }, [tasks]);
-
-  const changeCompleted = () => {
-    console.log("Cambiando estado");
-  };
+  }, [tasks]); 
 
   return (
     <div className="col-12">
@@ -57,13 +52,16 @@ function TaskListComponent() {
               </tr>
             </thead>
             <tbody>
-              {/* TODO: Iterar sobre una lista de tareas */}
-              <TaskComponent
-                task={defaultTask}
-                changeState={changeCompleted}
-              ></TaskComponent>
+              
+              {tasks.map((task, index) => 
+                <TaskComponent 
+                  key={index} 
+                  task={task} />)
+              }
+ 
             </tbody>
           </table>
+          <TaskForm />
         </div>
       </div>
     </div>
