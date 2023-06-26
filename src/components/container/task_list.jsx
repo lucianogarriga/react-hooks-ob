@@ -9,25 +9,34 @@ import TaskForm from "../pure/forms/taskForm";
 
 function TaskListComponent() {
   // Initial value of State Variable
-  const defaultTask1 = new Task("Example","Description 1",false,LEVELS.NORMAL); 
+  const defaultTask1 = new Task("Example 1","Description 1",false,LEVELS.NORMAL); 
   const defaultTask2 = new Task("Example 2","Description 2",true,LEVELS.BLOCKING);
   const defaultTask3 = new Task("Example 3","Description 3",true,LEVELS.URGENTE);
 
   // Component State
-  const [tasks, setTasks] = useState([defaultTask1, defaultTask2, defaultTask3]);
-  // State 'Loading'
+  const [tasks, setTasks] = useState([defaultTask1, defaultTask2, defaultTask3]); 
   const [loading, setLoading] = useState(true);
 
-  // Control of lifecycle of the Component
- 
-
+  // Control of lifecycle of the Component  
   useEffect(() => {
     console.log("Task State has been modified");
     setLoading(false);
     return () => {
       console.log("TaskList component is goint to unmount");
     };
-  }, [tasks]); 
+  }, [tasks])
+
+  function completedTask(task){
+    console.log('Complete this task: ', task.name, task.description);
+    const index = tasks.indexOf(task);
+    const tempTask = [...tasks];
+    tempTask[index].completed = !tempTask[index].completed;
+
+    // Update component state => it will update the
+    // iteration of tasks with the new list of tasks, 
+    //in order to show the task updated
+    setTasks(tempTask);
+  }
 
   return (
     <div className="col-12">
@@ -56,7 +65,8 @@ function TaskListComponent() {
               {tasks.map((task, index) => 
                 <TaskComponent 
                   key={index} 
-                  task={task} />)
+                  task={task} 
+                  complete={completedTask} />)
               }
  
             </tbody>

@@ -14,7 +14,7 @@ function App() {
  
   return (
     <> 
-      {/* <TaskListComponent></TaskListComponent> */}
+      <TaskListComponent></TaskListComponent>
       {/* <Ejemplo1 /> */}
       {/* <Ejemplo2 /> */}
       {/* <Ejemplo3/> */}
@@ -28,8 +28,8 @@ function App() {
       </Ejemplo4> */} 
       {/* <GreetingStyled name="Luciano"></GreetingStyled>  */} 
             {/* GESTION DE EVENTOS */}
-      <Father></Father>
-      <Practica/>
+      {/* <Father></Father>
+      <Practica/> */}
     </>
   );
 }
