@@ -1,7 +1,14 @@
+ 
 h1{
     color: lightgreen;
 }
 
+table{
+    font-size: 14px;
+}
+th{
+    padding: 5px;
+}
 .task-name{
     font-weight: bold;
     color: cadetblue;
@@ -9,4 +16,5 @@ h1{
 
 .task-action{
     cursor: pointer;
+    padding: 5px;
 }
