@@ -18,3 +18,7 @@ body{
   background-color: aliceblue;
 }
  
+.task-completed{
+  text-decoration: line-through;
+  color: gray;
+}

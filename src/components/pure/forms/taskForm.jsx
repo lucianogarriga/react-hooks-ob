@@ -34,7 +34,7 @@ const TaskForm = ({add}) => {
                     <option value={LEVELS.URGENTE}>Urgent</option>
                 </select>
             </div>
-        <button type='submit' className='btn btn-success btn-md'>Add</button>
+        <button type='submit' className='btn btn-success btn-md'>Add task</button>
         </form> 
         </>
     );

@@ -51,7 +51,7 @@ const TaskComponent = ({ task, complete, deleted }) => {
    */
   function taskCompletedIcon() {
     return task.completed ? (
-      <i onClick={() => complete(task)} className="bi-toggle-on task-action" style={{ color: "green" }}></i>
+      <i onClick={() => complete(task)} className="bi-toggle-on task-action " style={{ color: "green" }}></i>
     ) : (
       <i onClick={() => complete(task)} className="bi-toggle-off task-action" style={{ color: "red" }}></i>
     );
@@ -60,10 +60,15 @@ const TaskComponent = ({ task, complete, deleted }) => {
   return (
     <tr className="fw-normal">
       <th>
-        <span className="ms-2">{task.name}</span>
+        {task.completed 
+        ?  <span className="task-completed ms-2">{task.name}</span>
+        : <span className="ms-2">{task.name}</span>
+        }       
       </th>
       <td className="align-middle p-1">
-        <span>{task.description}</span>
+         {task.completed 
+        ? <span className="task-completed">{task.description}</span>
+        : <span >{task.description}</span>} 
       </td>
       <td className="align-middle p-1">
       {/* Execution of function to return a badge element */}
