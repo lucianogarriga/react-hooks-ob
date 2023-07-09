@@ -9,52 +9,55 @@ import TaskForm from "../pure/forms/taskForm";
 
 function TaskListComponent() {
   // Initial value of State Variable
-  const defaultTask1 = new Task("Task 1","Description 1",false,LEVELS.NORMAL); 
+  const defaultTask1 = new Task(
+    "Task 1",
+    "Description 1",
+    false,
+    LEVELS.NORMAL
+  );
   // const defaultTask2 = new Task("Task 2","Description 2",true,LEVELS.BLOCKING);
   // const defaultTask3 = new Task("Task 3","Description 3",true,LEVELS.URGENTE);
 
   // Component State
-  const [tasks, setTasks] = useState([]); 
+  const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Control of lifecycle of the Component  
+  // Control of lifecycle of the Component
   useEffect(() => {
     console.log("Task State has been modified");
     setLoading(false);
     return () => {
       console.log("TaskList component is goint to unmount");
     };
-  }, [tasks])
+  }, [tasks]);
 
-  function completedTask(task){
-    console.log('Complete this task: ', task.name, task.description);
+  function completedTask(task) {
+    console.log("Complete this task: ", task.name, task.description);
     const index = tasks.indexOf(task);
     const tempTask = [...tasks];
-    tempTask[index].completed = !tempTask[index].completed;
-
+    tempTask[index].completed = !tempTask[index].completed; 
     // Update component state => it will update the
-    // iteration of tasks with the new list of tasks, 
+    // iteration of tasks with the new list of tasks,
     //in order to show the task updated
     setTasks(tempTask);
   }
 
   // Function to delete tasks
-  function deleteTask(task){
-    console.log('Delete this task: ', task.name);
+  function deleteTask(task) {
+    console.log("Delete this task: ", task.name);
     const index = tasks.indexOf(task);
-    const tempTask = [...tasks];
-     
-    tempTask.splice(index, 1)
-    setTasks(tempTask)
+    const tempTask = [...tasks]; 
+    tempTask.splice(index, 1);
+    setTasks(tempTask);
   }
 
   // Funcion to create a new task
-  function addTask(task){
-    console.log('New task created: ', task);
-    console.log('Create this task: ', task.name); 
+  function addTask(task) {
+    console.log("New task created: ", task);
+    console.log("Create this task: ", task.name);
     const tempTask = [...tasks];
     tempTask.push(task);
-    setTasks(tempTask)
+    setTasks(tempTask);
   }
 
   return (
@@ -80,21 +83,19 @@ function TaskListComponent() {
               </tr>
             </thead>
             <tbody>
-              
-              {tasks.map((task, index) => 
-                <TaskComponent 
-                  key={index} 
-                  task={task} 
-                  complete={completedTask} 
+              {tasks.map((task, index) => (
+                <TaskComponent
+                  key={index}
+                  task={task}
+                  complete={completedTask}
                   deleted={deleteTask}
-                  />)
-              }
- 
+                />
+              ))}
             </tbody>
           </table>
         </div>
       </div>
-          <TaskForm add={addTask}/>
+      <TaskForm add={addTask} />
     </div>
   );
 }

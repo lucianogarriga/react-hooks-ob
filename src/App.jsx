@@ -1,41 +1,14 @@
-import "./App.css"; 
-import PropTypes from 'prop-types'; 
-import Ejemplo1 from "./hooks/Ejemplo1";
-import Ejemplo2 from "./hooks/Ejemplo2";
-import Ejemplo3 from "./hooks/Ejemplo3";
-import MiComponenteContexto from "./hooks/Ejemplo3";
-import Ejemplo4 from "./hooks/Ejemplo4";
-import TaskListComponent from "./components/container/task_list";
-import GreetingStyled from "./components/pure/greetingStyled";  
-import Father from "./components/container/father";
-import Practica from "./components/pure/practica";
+import "./App.css";
+import OptionalRender from "./components/pure/optionalRender";
+import TasksPage from "./pages/tasks/TasksPage";
 
-function App() { 
- 
+function App() {
   return (
-    <> 
-      <TaskListComponent></TaskListComponent>
-      {/* <Ejemplo1 /> */}
-      {/* <Ejemplo2 /> */}
-      {/* <Ejemplo3/> */}
-      {/* <MiComponenteContexto></MiComponenteContexto> */}
-            {/* CHILDREN POR PROPS */}
-      {/* <Ejemplo4 name="Default"> */}
-            {/* Todo lo que este dentro de este componente, 
-            es el children que se pasa por props */}
-        {/* <p>Contenido del children</p>
-        <p>Este es el children del componente padre</p>
-      </Ejemplo4> */} 
-      {/* <GreetingStyled name="Luciano"></GreetingStyled>  */} 
-            {/* GESTION DE EVENTOS */}
-      {/* <Father></Father>
-      <Practica/> */}
+    <>
+      <OptionalRender />
+      {/* <TasksPage /> */}
     </>
   );
 }
-
-// Greeting.propTypes = {
-//   name: PropTypes.string,
-// };
 
 export default App;

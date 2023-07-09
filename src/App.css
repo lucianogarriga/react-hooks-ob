@@ -22,3 +22,6 @@ body{
   text-decoration: line-through;
   color: gray;
 }
+.empty-list{
+  text-align: center;  
+}
