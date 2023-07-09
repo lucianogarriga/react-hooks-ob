@@ -3,12 +3,12 @@ import { useState } from "react";
 
 // Definiendo estilos en constantes
 
-// Estilos para Usuario Logueado
+// ? Estilos para Usuario Logueado
 const loggedStyles = {
   color: "lightgreen",
 };
 
-// Estilos para Usuario NO Logueado
+// ? Estilos para Usuario NO Logueado
 
 const unloggedStyles = {
   color: "tomato",
@@ -28,7 +28,8 @@ const GreetingStyled = (props) => {
 
   return (
     <div style={logged ? loggedStyles : unloggedStyles}>
-        {logged ? 
+        {logged 
+            ? 
             greetingUser
             : 
             pleaseLogin()
