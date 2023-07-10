@@ -60,11 +60,38 @@ function TaskListComponent() {
     setTasks(tempTask);
   }
 
+  const Table = () => {
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tasks.map((task, index) => (
+            <TaskComponent
+              key={index}
+              task={task}
+              complete={completedTask}
+              deleted={deleteTask}
+            />
+          ))}
+        </tbody>
+      </table>
+    );
+  };
+
+  let taskTable = <Table />;
+
   return (
     <div className="col-12">
       {tasks.length === 0 ? (
         <div className="mb-5 mt-5">
-          <h2>You don't have any task</h2> 
+          <h2>You don't have any task</h2>
         </div>
       ) : (
         <div className="card p-0">
@@ -76,26 +103,7 @@ function TaskListComponent() {
             data-mbd-perfect-scrollbar="true"
             style={{ position: "relative", height: "300px" }}
           >
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">Title</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Priority</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tasks.map((task, index) => (
-                  <TaskComponent
-                    key={index}
-                    task={task}
-                    complete={completedTask}
-                    deleted={deleteTask}
-                  />
-                ))}
-              </tbody>
-            </table>
+            {taskTable}
           </div>
         </div>
       )}
