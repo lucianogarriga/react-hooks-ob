@@ -4,7 +4,7 @@ import TaskListComponent from "../../components/container/task_list";
 const TasksPage = () => {
   return (
     <>
-      <h2>Lista de Tareas</h2>
+      <h2>Tasks List App</h2>
       <TaskListComponent />
     </>
   );

@@ -6,8 +6,8 @@ import TasksPage from "./pages/tasks/TasksPage";
 function App() {
   return (
     <> 
-      <OptionalRender />
-      {/* <TasksPage /> */}
+      {/* <OptionalRender /> */}
+      <TasksPage />
     </>
   );
 }

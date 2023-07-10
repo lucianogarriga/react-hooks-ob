@@ -35,7 +35,7 @@ function TaskListComponent() {
     console.log("Complete this task: ", task.name, task.description);
     const index = tasks.indexOf(task);
     const tempTask = [...tasks];
-    tempTask[index].completed = !tempTask[index].completed; 
+    tempTask[index].completed = !tempTask[index].completed;
     // Update component state => it will update the
     // iteration of tasks with the new list of tasks,
     //in order to show the task updated
@@ -46,7 +46,7 @@ function TaskListComponent() {
   function deleteTask(task) {
     console.log("Delete this task: ", task.name);
     const index = tasks.indexOf(task);
-    const tempTask = [...tasks]; 
+    const tempTask = [...tasks];
     tempTask.splice(index, 1);
     setTasks(tempTask);
   }
@@ -62,39 +62,44 @@ function TaskListComponent() {
 
   return (
     <div className="col-12">
-      <div className="card p-0">
-        {/* Card Header - Title */}
-        <div className="card-header pt-3">
-          <h5>Your Tasks:</h5>
+      {tasks.length === 0 ? (
+        <div className="mb-5 mt-5">
+          <h2>You don't have any task</h2> 
         </div>
-        {/* Body - Content */}
-        <div
-          className="card-body"
-          data-mbd-perfect-scrollbar="true"
-          style={{ position: "relative", height: "300px" }}
-        >
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Priority</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tasks.map((task, index) => (
-                <TaskComponent
-                  key={index}
-                  task={task}
-                  complete={completedTask}
-                  deleted={deleteTask}
-                />
-              ))}
-            </tbody>
-          </table>
+      ) : (
+        <div className="card p-0">
+          <div className="card-header pt-3">
+            <h5>Your Tasks:</h5>
+          </div>
+          <div
+            className="card-body"
+            data-mbd-perfect-scrollbar="true"
+            style={{ position: "relative", height: "300px" }}
+          >
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Priority</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tasks.map((task, index) => (
+                  <TaskComponent
+                    key={index}
+                    task={task}
+                    complete={completedTask}
+                    deleted={deleteTask}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      )}
+
       <TaskForm add={addTask} />
     </div>
   );
