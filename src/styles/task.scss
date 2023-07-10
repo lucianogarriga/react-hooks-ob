@@ -1,20 +1,34 @@
- 
-h1{
-    color: lightgreen;
+h1 {
+  color: lightgreen;
 }
 
-table{
-    font-size: 14px;
+table {
+  font-size: 14px;
 }
-th{
-    padding: 5px;
+th {
+  padding: 5px;
 }
-.task-name{
+.task-name {
+  font-weight: bold;
+  color: cadetblue;
+}
+
+.task-action {
+  cursor: pointer;
+  padding: 5px;
+}
+.task-completed {
+  text-decoration: line-through;
+  color: gray;
+  font-weight: lighter;
+}
+.task-pending {
     font-weight: bold;
-    color: cadetblue;
 }
-
-.task-action{
-    cursor: pointer;
-    padding: 5px;
+.empty-list {
+  text-align: center;
+}
+.select-ref{
+  border-radius: 5px;
+  background: gray;
 }

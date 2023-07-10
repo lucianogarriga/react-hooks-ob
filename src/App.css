@@ -39,11 +39,4 @@ button:hover {
 }  
 p{
   margin: 15px;
-} 
-.task-completed{
-  text-decoration: line-through;
-  color: gray;
-}
-.empty-list{
-  text-align: center;  
-}
+}  

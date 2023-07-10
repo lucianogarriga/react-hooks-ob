@@ -8,7 +8,6 @@ import { LEVELS } from "../../models/levels.enum";
 
 // Task||Props => Are the same
 const TaskComponent = ({ task, complete, deleted }) => {
-  
   useEffect(() => {
     console.log("Created task");
     return () => {
@@ -51,34 +50,45 @@ const TaskComponent = ({ task, complete, deleted }) => {
    */
   function taskCompletedIcon() {
     return task.completed ? (
-      <i onClick={() => complete(task)} className="bi-toggle-on task-action " style={{ color: "green" }}></i>
+      <i
+        onClick={() => complete(task)}
+        className="bi-toggle-on task-action "
+        style={{ color: "green" }}
+      ></i>
     ) : (
-      <i onClick={() => complete(task)} className="bi-toggle-off task-action" style={{ color: "red" }}></i>
+      <i
+        onClick={() => complete(task)}
+        className="bi-toggle-off task-action"
+        style={{ color: "red" }}
+      ></i>
     );
   }
 
   return (
-    <tr className="fw-normal">
-      <th>
-        {task.completed 
-        ?  <span className="task-completed ms-2">{task.name}</span>
-        : <span className="ms-2">{task.name}</span>
-        }       
-      </th>
-      <td className="align-middle p-1">
-         {task.completed 
-        ? <span className="task-completed">{task.description}</span>
-        : <span >{task.description}</span>} 
-      </td>
-      <td className="align-middle p-1">
-      {/* Execution of function to return a badge element */}
-      {taskLevelBadge()}
-      </td>
-      <td className="align-middle p-1">  
-      {/* Execution of function to return icon depending if task is completed or not */}
-        {taskCompletedIcon()}
-        <i onClick={() => deleted(task)} className="bi-trash task-action" style={{ color: "tomato" }}></i>
-      </td>
+    <tr className={task.completed 
+      ? "task-completed ms-2 fw-normal" 
+      : "ms-2 fw-normal"}>
+        <th>
+          <span>{task.name}</span>
+        </th>
+        <td className={task.completed 
+          ? "task-completed align-middle p-1" 
+          : "task-pending align-middle p-1"}>
+            <span >{task.description}</span>
+        </td>
+        <td className="align-middle p-1">
+          {/* Execution of function to return a badge element */}
+          {taskLevelBadge()}
+        </td>
+        <td className="align-middle p-1">
+          {/* Execution of function to return icon depending if task is completed or not */}
+          {taskCompletedIcon()}
+          <i
+            onClick={() => deleted(task)}
+            className="bi-trash task-action"
+            style={{ color: "tomato" }}
+          ></i>
+        </td>
     </tr>
   );
 };
@@ -86,7 +96,7 @@ const TaskComponent = ({ task, complete, deleted }) => {
 TaskComponent.propTypes = {
   task: PropTypes.instanceOf(Task).isRequired,
   complete: PropTypes.func.isRequired,
-  deleted: PropTypes.func.isRequired
+  deleted: PropTypes.func.isRequired,
 };
 
 export default TaskComponent;

@@ -25,7 +25,9 @@ function TaskListComponent() {
   // Control of lifecycle of the Component
   useEffect(() => {
     console.log("Task State has been modified");
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
     return () => {
       console.log("TaskList component is goint to unmount");
     };
@@ -85,31 +87,38 @@ function TaskListComponent() {
     );
   };
 
-  let taskTable = <Table />;
+  let taskTable = <Table></Table>;
 
   return (
-    <div className="col-12">
-      {tasks.length === 0 ? (
-        <div className="mb-5 mt-5">
-          <h2>You don't have any task</h2>
-        </div>
+    <>
+      {loading ? (
+        <p>Loading...</p>
       ) : (
-        <div className="card p-0">
-          <div className="card-header pt-3">
-            <h5>Your Tasks:</h5>
-          </div>
-          <div
-            className="card-body"
-            data-mbd-perfect-scrollbar="true"
-            style={{ position: "relative", height: "300px" }}
-          >
-            {taskTable}
-          </div>
+        <div className="col-12">
+          {tasks.length === 0 ? (
+            <div className="mb-5 mt-5">
+              <h2>You don't have any task</h2>
+              <h4>Please create one!</h4>
+            </div>
+          ) : (
+            <div className="card p-0">
+              <div className="card-header pt-3">
+                <h5>Your Tasks:</h5>
+              </div>
+              <div
+                className="card-body"
+                data-mbd-perfect-scrollbar="true"
+                style={{ position: "relative", height: "300px" }}
+              >
+                {taskTable}
+              </div>
+            </div>
+          )}
+
+          <TaskForm add={addTask} length={tasks.length} />
         </div>
       )}
-
-      <TaskForm add={addTask} />
-    </div>
+    </>
   );
 }
 
