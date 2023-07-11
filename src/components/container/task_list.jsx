@@ -94,7 +94,7 @@ function TaskListComponent() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="col-12">
+        <div className="col-12 form-table">
           {tasks.length === 0 ? (
             <div className="mb-5 mt-5">
               <h2>You don't have any task</h2>

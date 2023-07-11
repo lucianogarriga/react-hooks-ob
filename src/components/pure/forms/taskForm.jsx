@@ -23,7 +23,7 @@ const TaskForm = ({ add, length }) => {
     <>
       <form onSubmit={addTask} className="justify-content-center align-items-center mb-4" >
         <div className="form-outline flex-fill">
-          <input ref={nameRef} id="inputName" type="text"
+          <input ref={nameRef} id="inputName" type="text" 
             placeholder="Insert a new task" className="form-control form-control-md mt-2" required autoFocus />
           <input ref={descriptionRef}  id="description" type="text"
             placeholder="Task description" className="form-control form-control-md mt-2" required /> 
@@ -35,7 +35,7 @@ const TaskForm = ({ add, length }) => {
           </select>
         </div>
 
-          {length == 0 
+          {length === 0 
           ?  <button type="submit" className="btn btn-success btn-md">
                 Create your first task!
             </button>
