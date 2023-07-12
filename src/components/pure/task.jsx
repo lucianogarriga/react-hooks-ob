@@ -64,6 +64,8 @@ const TaskComponent = ({ task, complete, deleted }) => {
     );
   }
 
+  
+
   return (
     <tr className={task.completed 
       ? "task-completed ms-2 fw-normal" 
