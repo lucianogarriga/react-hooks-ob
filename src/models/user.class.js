@@ -1,4 +1,4 @@
-import {ROLES } from './role.enum'
+import {ROLES } from './roles.enum'
 
 export class User {
     username = "";
