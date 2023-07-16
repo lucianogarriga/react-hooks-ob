@@ -4,6 +4,11 @@ import { Task } from '../../../models/task.class';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+const formSchema = Yup.object().shape({
+    name: Yup.string()
+        .required("Task name is required")
+})
+
 const TaskFormik = ({add, length}) => { 
     // const nameRef = useRef("");
     // const descriptionRef = useRef("");
@@ -47,6 +52,12 @@ const TaskFormik = ({add, length}) => {
                             <option value={LEVELS.URGENTE}>Urgent</option>
                             </select>
                         </div>
+
+                        {length === 0 
+                            ? <button type='submit' className='btn btn-success btn-md'>Create your first task</button>
+                            : <button type='submit' className='btn btn-success btn-md'>Add a new task</button>
+                        }
+
                     </Form>
                 )
             }
