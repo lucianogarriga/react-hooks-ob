@@ -43,26 +43,29 @@ const TaskFormik = ({ add, length }) => {
         {({ errors, touched }) => (
           <Form>
             <div className="form-outline flex-fill">
-              {/* input nameRef */}
-              <label htmlFor="name">Task Name</label>
+              {/* input name */}
+              <label htmlFor="name" className="m-3">Task Name</label>
               <Field
                 id="name"
                 type="text"
                 name="name"
                 placeholder="Your task"
+                style={{width: "200px"}}
               />
               <ErrorMessage name="name" component="div" className="error"/>
 
-              {/* input descriptionRef */}
-              <label htmlFor="description">Task Description</label>
+              {/* input description */}
+              <label htmlFor="description" className="m-3">Task Description</label>
               <Field
                 id="description"
                 type="text"
                 name="description"
                 placeholder="description"
+                style={{width: "200px"}}
               />
               <ErrorMessage name="description" component="div" className="error"/>
 
+              {/* input level */}
               <label htmlFor="level" className="sr-only m-3">Priority Level:</label>
               <Field 
                 as="select"
