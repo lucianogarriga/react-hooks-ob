@@ -6,6 +6,7 @@ import TaskComponent from "../pure/task";
 // Import styles
 import "../../styles/task.scss";
 import TaskForm from "../pure/forms/taskForm";
+import TaskFormik from "../pure/forms/taskFormik";
 
 function TaskListComponent() {
   // Initial value of State Variable
@@ -115,7 +116,8 @@ function TaskListComponent() {
             </div>
           )}
 
-          <TaskForm add={addTask} length={tasks.length} />
+            {/* <TaskForm add={addTask} length={tasks.length} /> */}
+            <TaskFormik add={addTask} length={tasks.length} />
         </div>
       )}
     </>

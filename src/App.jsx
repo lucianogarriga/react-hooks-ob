@@ -8,10 +8,10 @@ import TasksPage from "./pages/tasks/TasksPage";
 function App() {
   return (
     <> 
-    {/* <LoginFormik/> */}
-    <RegisterFormik/>
+    <LoginFormik/>
+    {/* <RegisterFormik/> */}
       {/* <OptionalRender /> */}
-      {/* <TasksPage /> */}
+      <TasksPage />
     </>
   );
 }

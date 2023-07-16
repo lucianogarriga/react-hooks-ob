@@ -30,14 +30,14 @@ const RegisterFormik = () => {
       .min(8, "Password too short. Min 8 characters")
       .required("Password is required"),
     confirm: Yup.string()
-      .when("password", { 
+      .when("password", {  
         then: Yup.string().oneOf([Yup.ref("password")], "Password must match")
       })
       .required("You must confirm the password"),
   });
 
   const submit = (values) => {
-    alert("Register user");
+    alert(values);
   };
 
   return (
