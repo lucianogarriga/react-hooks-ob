@@ -71,8 +71,7 @@ const TaskFormik = ({ add, length }) => {
                 as="select"
                 id="level"
                 name="level"
-                className="select-ref"
-              >
+                className="select-ref" >
                 <option value={LEVELS.NORMAL}>Normal</option>
                 <option value={LEVELS.BLOCKING}>Blocking</option>
                 <option value={LEVELS.URGENTE}>Urgent</option>
