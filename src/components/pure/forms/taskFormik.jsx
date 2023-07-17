@@ -5,8 +5,10 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 const formSchema = Yup.object().shape({
-  name: Yup.string().required("Task name is required"),
-  description: Yup.string().required("Task description is required"),
+  name: Yup.string()
+    .required("Task name is required"),
+  description: Yup.string()
+    .required("Task description is required"),
 });
 
 const TaskFormik = ({ add, length }) => { 

@@ -8,9 +8,11 @@ import App from './App.jsx'
 
 // ! Los estilos propios deben ir luego de importar Bootstrap
 import './index.css'
+import AppRoutingOne from './AppRoutingOne.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <AppRoutingOne/>
   </React.StrictMode>,
 )
