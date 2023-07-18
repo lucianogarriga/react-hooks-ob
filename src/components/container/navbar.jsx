@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserRouter as Routes, Route, Link} from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({taskList}) => {
   return (
     <> 
       <Link to="/">HOME - </Link>
