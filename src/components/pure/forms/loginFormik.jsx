@@ -10,7 +10,7 @@ const loginSchema = Yup.object().shape({
   .required("Password is required"),
 });
 
-const LoginFormik = () => {
+function LoginFormik() {
   const initialCredentials = {
     email: "",
     password: "",
@@ -18,7 +18,7 @@ const LoginFormik = () => {
 
   return (
     <div>
-      <h2>Login Form</h2>
+      <h2>Login Formik</h2>
       <Formik
         initialValues={initialCredentials}
         // Yup Validation Schema
