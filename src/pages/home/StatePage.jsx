@@ -3,14 +3,17 @@ import {useLocation } from 'react-router-dom';
 
 const StatePage = () => {
 
-    const location = useLocation();
+    const location = useLocation(); 
+    const searchParams = new URLSearchParams(location.search);
+    const online = searchParams.get('online')
 
-    console.log(location.state.online); // State
-    console.log(location.search); // Query Params Set
+
+    console.log('Query params ', online);
 
     return (
         <div>
-            <h1>State: {location.state.online}</h1>
+            <h1>State: {location.state && location.state.online ? 'The user is online' : 'The user is offline'}</h1>
+            <h1>Query Params: {online ? 'The user is online' : 'The user is offline'}</h1>
         </div>
     );
 }

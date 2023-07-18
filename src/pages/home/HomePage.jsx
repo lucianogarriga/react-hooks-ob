@@ -1,22 +1,19 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
-const HomePage = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  console.log("We are in Route: ", location.pathname);
+const HomePage = () => { 
+  const navigate = useNavigate(); 
 
   const goTo = (path) => {
     navigate(path);
   };
 
-  const navigateProps = (path) => {
-    navigate(path,{ 
-      search: '?online=true', // Query Params
+  const navigateProps = (path, online) => {
+    navigate(`${path}/${online}`, {
       state: {
-        online: true
-      }
+        online: online === 'true'
+      },
+      search: `?online=${online}`
     });
   };
 
@@ -24,7 +21,7 @@ const HomePage = () => {
     <div>
       <h1>Home Page</h1>
       <div>
-        <button onClick={() => navigateProps('/online-state')}>Go To Page with State / Query Params</button> 
+        <button onClick={() => navigateProps('/online-state', 'true')}>Go To Page with State / Query Params</button> 
         <button onClick={() => goTo('/profile')}>Go To Profile</button> 
       </div>
     </div>

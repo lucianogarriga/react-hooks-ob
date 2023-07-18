@@ -83,7 +83,7 @@ function AppRoutingOne() {
         <main>
           <Routes>
             <Route exact path="/" element={<HomePage />} />
-            <Route exact path="/online-state" element={<StatePage/>}/>
+            <Route exact path="/online-state/:online" element={<StatePage/>}/>
             <Route path="/login" element={<GoLoginPage />} />
             <Route path="/tasks" element={<TasksPage />} />
             <Route
