@@ -51,7 +51,7 @@ const TaskFormik = ({ add, length }) => {
                 id="name"
                 type="text"
                 name="name"
-                placeholder="Task Name"
+                placeholder="Insert your task name"
                 style={{width: "200px", marginBottom: "1rem"}}
               />
               <ErrorMessage name="name" component="div" className="error"/>
@@ -62,7 +62,7 @@ const TaskFormik = ({ add, length }) => {
                 id="description"
                 type="text"
                 name="description"
-                placeholder="Task Description"
+                placeholder="Insert the description"
                 style={{width: "200px"}}
               />
               <ErrorMessage name="description" component="div" className="error"/>

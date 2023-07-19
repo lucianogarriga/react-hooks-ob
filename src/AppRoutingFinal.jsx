@@ -15,7 +15,7 @@ import TaskListComponent from "./components/container/task_list";
 
 function AppRoutingFinal() {
   // TODO: Change to value from sessionStorage
-  let loggedIn = true;
+  let loggedIn = false;
 
   const DashboardLogin = () => {
     if (loggedIn) {
@@ -41,6 +41,16 @@ function AppRoutingFinal() {
     }
   }
 
+  const GoProfilePage = () => {
+    if(loggedIn){
+      alert("You are logged in. Redirect to home...");
+      return <Navigate to="/" replace />;
+    } else {
+      alert("You must logged in. Redirect to Login page...");
+      return <LoginPage />;
+    }
+  };
+
   return (
     <Router>
       <aside>
@@ -65,6 +75,9 @@ function AppRoutingFinal() {
 
         {/* Tasks Page */}
         <Route exact path="/tasks" element={<TaskNavigate/>}/>
+
+        {/* Go Profile Page */}
+        <Route path="/profile" element={<GoProfilePage/>}/>
 
         {/* Dashboard Page */}
         <Route exact path="/dashboard" element={<DashboardInto />} />
