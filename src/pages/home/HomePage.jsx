@@ -21,7 +21,7 @@ const HomePage = () => {
     <div>
       <h1>Home Page</h1>
       <div>
-        <button onClick={() => navigateProps('/online-state', 'true')}>Go To Page with State / Query Params</button> 
+        {/* <button onClick={() => navigateProps('/online-state', 'true')}>Go To Page with State / Query Params</button>  */}
         <button onClick={() => goTo('/profile')}>Go To Profile</button> 
       </div>
     </div>

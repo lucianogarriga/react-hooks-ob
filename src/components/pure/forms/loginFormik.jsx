@@ -26,7 +26,7 @@ function LoginFormik() {
 
   return (
     <div>
-      <h2>Login Formik</h2>
+      <h4 style={{marginTop: "1.5rem"}}>Login Form with Formik</h4>
       <Formik
         initialValues={initialCredentials}
         // Yup Validation Schema

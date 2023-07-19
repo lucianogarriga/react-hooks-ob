@@ -42,7 +42,7 @@ const RegisterFormik = () => {
 
   return (
     <div>
-      <h4>Register Formik</h4>
+      <h4 style={{marginTop: "1.5rem"}}>Register Form with Formik</h4>
       <Formik
         initialValues={initialValues}
         validationSchema={registerSchema}
@@ -95,12 +95,13 @@ const RegisterFormik = () => {
               placeholder="password"
               type="password"
             />
+            <br/>
             {/* Password Errors */}
             {errors.password && touched.password && (
               <ErrorMessage name="password" component="div"></ErrorMessage>
             )}
 
-            <label htmlFor="confirm">Password</label>
+            <label htmlFor="confirm">Confirm</label>
             <Field
               id="confirm"
               name="confirm"

@@ -9,10 +9,12 @@ import App from './App.jsx'
 // ! Los estilos propios deben ir luego de importar Bootstrap
 import './index.css'
 import AppRoutingOne from './AppRoutingOne.jsx';
+import AppRoutingFinal from './AppRoutingFinal.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* <App /> */}
-    <AppRoutingOne/>
+    {/* <AppRoutingOne/> */}
+    <AppRoutingFinal/>
   </React.StrictMode>,
 )
