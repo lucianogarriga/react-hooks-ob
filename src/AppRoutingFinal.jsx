@@ -11,6 +11,7 @@ import HomePage from "./pages/home/HomePage";
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import AboutPage from "./pages/about-faqs/AboutPage";
+import TaskListComponent from "./components/container/task_list";
 
 function AppRoutingFinal() {
   // TODO: Change to value from sessionStorage
@@ -31,6 +32,14 @@ function AppRoutingFinal() {
       return <Navigate from="/" to="/login" />;
     }
   };
+  
+  const TaskNavigate = () => {
+    if (loggedIn){
+      return <TaskListComponent/>;
+    } else {
+      return <Navigate from="/" to="/login"/>
+    }
+  }
 
   return (
     <Router>
@@ -38,6 +47,7 @@ function AppRoutingFinal() {
         <Link to="/">HOME - </Link>
         <Link to="/login">LOGIN - </Link>
         <Link to="/register">REGISTER - </Link>
+        <Link to="/tasks"> TASKS - </Link> 
         <Link to="/about"> ABOUT - </Link>
         <Link to="/faqs"> FAQs -</Link>
         <Link to="/contact"> NOT EXIST </Link>
@@ -50,9 +60,11 @@ function AppRoutingFinal() {
 
         {/* Login Route */}
         <Route exact path="/login" element={<LoginPage />} />
-
         {/* Register Route */}
         <Route exact path="/register" element={<RegisterPage />} />
+
+        {/* Tasks Page */}
+        <Route exact path="/tasks" element={<TaskNavigate/>}/>
 
         {/* Dashboard Page */}
         <Route exact path="/dashboard" element={<DashboardInto />} />

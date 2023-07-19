@@ -46,3 +46,10 @@ label{
   display: inline-block;
   width: 80px;
 }
+.register{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.account{
+  font-size: 1rem;
+}

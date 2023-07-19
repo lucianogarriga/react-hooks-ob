@@ -19,6 +19,10 @@ function LoginFormik() {
     navigate('/profile') 
   }
 
+  const goRegister = () => {
+    navigate('/register')
+  }
+
   const initialCredentials = {
     email: "",
     password: "",
@@ -78,9 +82,8 @@ function LoginFormik() {
                 <ErrorMessage name="password" component="div" /> 
             )}
             <br/>
-            <button type="submit" className="m-3">
-              Login
-            </button>
+            <button type="submit" className="m-3"> Login </button> 
+            <p className="account"> Don't have an account? <a onClick={goRegister} className="register">Register </a> </p>
             {isSubmitting ? <p>Login your credentials...</p> : null}
           </Form>
         )}

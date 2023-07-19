@@ -4,6 +4,7 @@ import * as Yup from "yup";
 // Models
 import { User } from "../../../models/user.class";
 import { ROLES } from "../../../models/roles.enum";
+import { useNavigate } from "react-router-dom";
 
 const RegisterFormik = () => {
   let user = new User();
@@ -39,6 +40,12 @@ const RegisterFormik = () => {
   const submit = (values) => {
     alert(values);
   };
+
+  const navigate = useNavigate();
+
+  const goLogin = () => {
+    navigate('/login')
+  }
 
   return (
     <div>
@@ -92,7 +99,7 @@ const RegisterFormik = () => {
             <Field
               id="password"
               name="password"
-              placeholder="password"
+              placeholder="password1234"
               type="password"
             />
             <br/>
@@ -105,7 +112,7 @@ const RegisterFormik = () => {
             <Field
               id="confirm"
               name="confirm"
-              placeholder="confirm passsword"
+              placeholder="password1234"
               type="password"
             />
             {/* Confirm Password Errors */}
@@ -113,9 +120,9 @@ const RegisterFormik = () => {
               <ErrorMessage name="confirm" component="div"></ErrorMessage>
             )}
 
-            <br />
-
-            <button type="submit">Register</button>
+            <br /> 
+            <button className="m-3" type="submit">Register</button>
+            <p className="account"> Have an account already? <a onClick={goLogin} className="register">Log in </a> </p>
             {isSubmitting ? <p>Sending your credentials..</p> : null}
           </Form>
         )}
