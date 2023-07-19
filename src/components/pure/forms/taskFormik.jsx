@@ -46,7 +46,7 @@ const TaskFormik = ({ add, length }) => {
           <Form>
             <div className="form-outline flex-fill">
               {/* input name */}
-              <label htmlFor="name" className="m-3"> </label>
+              <label htmlFor="name"> Task Name </label>
               <Field
                 id="name"
                 type="text"
@@ -55,9 +55,9 @@ const TaskFormik = ({ add, length }) => {
                 style={{width: "200px", marginBottom: "1rem"}}
               />
               <ErrorMessage name="name" component="div" className="error"/>
-
+              <br/>
               {/* input description */}
-              <label htmlFor="description" className="m-3"></label>
+              <label htmlFor="description"> Task Description</label>
               <Field
                 id="description"
                 type="text"
