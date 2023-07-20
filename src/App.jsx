@@ -1,4 +1,5 @@
 import "./App.css";
+import AsyncExample from "./components/pure/AsyncExample";
 import LoginFormik from "./components/pure/forms/loginFormik";
 import RegisterFormik from "./components/pure/forms/registerFormik";
 import GreetingStyled from "./components/pure/greetingStyled";
@@ -11,7 +12,9 @@ function App() {
     {/* <LoginFormik/> */}
     {/* <RegisterFormik/> */}
       {/* <OptionalRender /> */}
-      <TasksPage />
+    {/* Ejemplo Ejercicios Asincronos */}
+    <AsyncExample/>
+      {/* <TasksPage /> */}
     </>
   );
 }
