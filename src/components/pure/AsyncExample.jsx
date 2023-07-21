@@ -53,6 +53,17 @@ const AsyncExample = () => {
     alert(`The message is: ${message}`);
   }
 
+  const returnError = async() => {
+    await Promise.reject(new Error('Ups, An error occurred'))
+  }
+
+  const consumeError = () => {
+    returnError()
+      .then((res) => alert(`Resolve is ok ${res}`))
+      .catch((err) => alert(`An error exists: ${err}`))
+      .finally(() => alert('The promise was executed'))
+  }
+
   return (
     <div>
       <h1>Async Example</h1>
@@ -60,6 +71,7 @@ const AsyncExample = () => {
       <button onClick={obtainPromiseNumber}>Obtener Promesa</button>
       <button onClick={showStorage}>Save Name</button>
       <button onClick={obtainMessage}>Show message</button>
+      <button onClick={consumeError}>Consume Error</button>
     </div>
   );
 };
