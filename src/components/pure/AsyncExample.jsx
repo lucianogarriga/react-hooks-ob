@@ -64,6 +64,30 @@ const AsyncExample = () => {
       .finally(() => alert('The promise was executed'))
   }
 
+  // Async function with Try Catch
+
+  const urlNotFound = async() => {
+    try{
+      let response = await fetch('https://invalidurl.com');
+      alert(`Response ${JSON.stringify(response)}`)
+    } catch (error) { 
+      alert(`Error ${error} with the URL`)
+    }
+  }
+
+  // Async function with multiple promises
+
+  const multiplePromise = async() => {
+    let results = await Promise.all(
+      [
+        fetch('https://reqres.in/api/users'),
+        fetch('https://reqres.in/api/users?page=2')
+      ]
+    )
+    .catch((err) => alert(`Error: ${err}`))
+    .finally(() => alert('Async function executed'))
+  }
+
   return (
     <div>
       <h1>Async Example</h1>
@@ -72,6 +96,8 @@ const AsyncExample = () => {
       <button onClick={showStorage}>Save Name</button>
       <button onClick={obtainMessage}>Show message</button>
       <button onClick={consumeError}>Consume Error</button>
+      <button onClick={urlNotFound}>Not found</button>
+      <button onClick={multiplePromise}>Multiple Promise</button>
     </div>
   );
 };
