@@ -1,5 +1,6 @@
 import "./App.css";
 import AsyncExample from "./components/pure/AsyncExample";
+import ObservableExample from "./components/pure/ObservableExample";
 import LoginFormik from "./components/pure/forms/loginFormik";
 import RegisterFormik from "./components/pure/forms/registerFormik";
 import GreetingStyled from "./components/pure/greetingStyled";
@@ -13,7 +14,8 @@ function App() {
     {/* <RegisterFormik/> */}
       {/* <OptionalRender /> */}
     {/* Ejemplo Ejercicios Asincronos */}
-    <AsyncExample/>
+    {/* <AsyncExample/> */}
+    <ObservableExample/>
       {/* <TasksPage /> */}
     </>
   );
