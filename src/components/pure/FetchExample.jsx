@@ -4,10 +4,10 @@ import { getAllUsers } from '../../services/fetchService';
 
 const FetchExample = () => {
 
-    const [users, setUsers] = useState(0);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        
+        // getData();
         obtainUsers();
     }, []);
 
@@ -24,15 +24,30 @@ const FetchExample = () => {
             })
     }
 
+    // const getData = async() => {
+    //     const url = 'https://reqres.in/api/users';
+    //     try{
+    //         const response = await fetch(url);
+    //         const res = await response.json();
+    //         const data =  res.data;
+    //         console.log(data);
+    //         setUsers(data)
+    //     } catch{
+    //         (error) => alert(`Error retreiving users => ${error}`)
+    //     }
+    // }
+
     return (
         <div>
             <h1>Fetch Example</h1>
             {
-                users.map(user => {
+                users.map((user) => (
+                    <>
                     <ul>
-                        <li>{user.first_name}</li>
+                        <li key={user.id}>{user.id} - {user.first_name} {user.last_name}</li>
                     </ul>
-                })
+                    </>
+                ))
             }
         </div>
     );
