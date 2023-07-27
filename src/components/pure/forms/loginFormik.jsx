@@ -23,6 +23,19 @@ function LoginFormik() {
     navigate('/register')
   }
 
+  const handleLogin = async(values) => {
+    try{
+      const isAuthenticated = await authenticateUser(values.mail, values.password);
+      if(isAuthenticated){
+        navigate('/profile')
+      } else {
+        alert("Credenciales invalidas")
+      }
+    } catch(error){
+      console.log("Ha ocurrido un error: ", error.message);
+    }
+  }
+
   const initialCredentials = {
     email: "",
     password: "",
@@ -35,23 +48,19 @@ function LoginFormik() {
         initialValues={initialCredentials}
         // Yup Validation Schema
         validationSchema={loginSchema}
-        onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 2000));
-          alert(JSON.stringify(values, null, 2));
-          // We save the data in local storage of browser
-          await sessionStorage.setItem("credentials", values);
-          goTo();
-        }}
+        onSubmit={async (values, {setSubmitting}) => {
+          setSubmitting(true);
+          await handleLogin(values);
+          setSubmitting(false);
+        }
+        }
       >
         {/* Obtain Props from Formik */}
 
-        {({
-          values,
-          errors,
+        {({ 
           touched,
-          isSubmitting,
-          handleChange,
-          handleBlur,
+          errors,
+          isSubmitting, 
         }) => (
           <Form>
             <label htmlFor="email" className="mt-3">
@@ -82,9 +91,10 @@ function LoginFormik() {
                 <ErrorMessage name="password" component="div" /> 
             )}
             <br/>
-            <button type="submit" className="m-3"> Login </button> 
-            <p className="account"> Don't have an account? <a onClick={goRegister} className="register">Register </a> </p>
-            {isSubmitting ? <p>Login your credentials...</p> : null}
+            <button type="submit" className="m-3" disabled={isSubmitting}> 
+              {isSubmitting ? "Login in..." :  "Login"}
+             </button> 
+            <p className="account"> Don't have an account? <a onClick={goRegister} className="register">Register </a> </p> 
           </Form>
         )}
       </Formik>

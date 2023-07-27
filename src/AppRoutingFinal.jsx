@@ -12,10 +12,39 @@ import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import AboutPage from "./pages/about-faqs/AboutPage";
 import TaskListComponent from "./components/container/task_list";
+import { useEffect, useState } from "react";
 
 function AppRoutingFinal() {
   // TODO: Change to value from sessionStorage
-  let loggedIn = false;
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedInSession = sessionStorage.getItem("loggedIn");
+    if (loggedInSession === 'true'){
+      setLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogin = async(username, password) => {
+    try {
+      const isAuthenticated = await authenticatedUser(username, password);
+
+      if(isAuthenticated){
+        setLoggedIn(true);
+        sessionStorage.setItem("loggedIn", "true")
+      } else {
+        console.log("Credenciales invalidas. Intentalo nuevamente");
+      }
+    } catch (error) {
+      console.log("Error durante la autenticacion: ", error.message);
+    }
+     
+  }
+
+  const handleLogout =() => {
+    setLoggedIn(false);
+    sessionStorage.setItem("loggedIn", "false")
+  }
 
   const DashboardLogin = () => {
     if (loggedIn) {
@@ -69,7 +98,7 @@ function AppRoutingFinal() {
         <Route exact path="/" element={<DashboardLogin />} />
 
         {/* Login Route */}
-        <Route exact path="/login" element={<LoginPage />} />
+        <Route exact path="/login" element={<LoginPage onLogin={handleLogin}/>} />
         {/* Register Route */}
         <Route exact path="/register" element={<RegisterPage />} />
 
