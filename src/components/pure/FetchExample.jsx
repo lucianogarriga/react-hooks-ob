@@ -3,6 +3,7 @@ import {
   getAllPagedUsers,
   getAllUsers,
   getUserDetails,
+  login
 } from "../../services/fetchService";
 
 const FetchExample = () => {
@@ -62,6 +63,18 @@ const FetchExample = () => {
       });
   };
 
+  const authUser = () => {
+    login("eve.holt@reqres.in", "cityslicka")
+    .then((response) => {
+      console.log("Token: ", response.token);
+      sessionStorage.setItem('token', response.token)
+    })
+    .catch((error) => alert(`Error login user => ${error}`))
+    .finally(() => {
+      console.log("Login successful"); 
+    });
+  }
+
   // const getData = async() => {
   //     const url = 'https://reqres.in/api/users';
   //     try{
@@ -77,9 +90,10 @@ const FetchExample = () => {
 
   return (
     <div>
+      <button onClick={authUser}>Auth User</button>
       <h1>Fetch Example</h1>
       {users.map((user, index) => (
-        <p key={index} onClick={() => obtainUserDetails(user.id)}>
+        <p key={index} onClick={() => obtainUserDetails(user.id)} style={{cursor: "pointer"}}>
           {user.id} - {user.first_name} {user.last_name}
         </p>
       ))}
@@ -89,14 +103,17 @@ const FetchExample = () => {
       <button onClick={() => obtainPagedUsers(1)}> 1 </button>
       <button onClick={() => obtainPagedUsers(2)}> 2 </button>
       <div>
-        <h3>User Details</h3>
-        {selectedUser && (
+        {selectedUser != null ? 
+        (
           <div>
+            <h3>User Details</h3>
             <p>Name: {selectedUser.first_name}</p>
             <p>Lastname: {selectedUser.last_name}</p>
             <p>Email: {selectedUser.email}</p>
-            <img alt='Avatar' src={selectedUser.avatar }/>
+            <img alt="Avatar" src={selectedUser.avatar} />
           </div>
+        ) : (
+          <p>No user selected</p>
         )}
       </div>
     </div>
