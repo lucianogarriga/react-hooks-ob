@@ -1,5 +1,6 @@
 import "./App.css";
 import AsyncExample from "./components/pure/AsyncExample";
+import AxiosCRUDExample from "./components/pure/AxiosCRUDExample";
 import AxiosExample from "./components/pure/AxiosExample";
 import FetchExample from "./components/pure/FetchExample";
 import ObservableExample from "./components/pure/ObservableExample";
@@ -19,7 +20,8 @@ function App() {
     {/* <AsyncExample/> */}
     {/* <ObservableExample/> */}
     {/* <FetchExample/> */}
-    <AxiosExample/>
+    {/* <AxiosExample/> */}
+    <AxiosCRUDExample/>
       {/* <TasksPage /> */}
     </>
   );

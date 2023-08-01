@@ -12,6 +12,7 @@ import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import AboutPage from "./pages/about-faqs/AboutPage";
 import TaskListComponent from "./components/container/task_list";
+import AxiosCRUDExample from "./components/pure/AxiosCRUDExample";
 
 function AppRoutingFinal() {
   // TODO: Change to value from sessionStorage
@@ -75,7 +76,6 @@ function AppRoutingFinal() {
 
         {/* Tasks Page */}
         <Route exact path="/tasks" element={<TaskNavigate/>}/>
-
         {/* Go Profile Page */}
         <Route path="/profile" element={<GoProfilePage/>}/>
 

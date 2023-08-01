@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getRandomUsers } from "../../utils/axiosService";
+import { getRandomUsers } from "../../services/axiosService";
 
 const AxiosExample = () => {
   const [user, setUser] = useState(null);

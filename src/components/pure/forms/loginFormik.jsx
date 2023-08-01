@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Navigate, useNavigate } from "react-router-dom";
+import { login } from "../../../services/axiosCRUDService";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -26,6 +27,25 @@ function LoginFormik() {
   const initialCredentials = {
     email: "",
     password: "",
+  }; 
+  
+  const authUser = (values) => {
+    login(values.email, values.password)
+      .then((response) => {
+        if (response.data?.token) {
+          alert(JSON.stringify(`Token: ${response.data?.token}`));
+          sessionStorage.setItem("token", response.data?.token);
+        } else {
+          sessionStorage.removeItem("token");
+          throw new Error("Login failure");
+        }
+        alert(JSON.stringify(response.data.token));
+      })
+      .catch((error) => {
+        sessionStorage.removeItem("token");
+        alert(`An error occurred: ${error}`);
+      })
+      .finally(() => console.log("Login done"));
   };
 
   return (
@@ -36,11 +56,7 @@ function LoginFormik() {
         // Yup Validation Schema
         validationSchema={loginSchema}
         onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 2000));
-          alert(JSON.stringify(values, null, 2));
-          // We save the data in local storage of browser
-          await sessionStorage.setItem("credentials", values);
-          goTo();
+          authUser(values)
         }}
       >
         {/* Obtain Props from Formik */}
